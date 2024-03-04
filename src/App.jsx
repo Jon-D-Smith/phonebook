@@ -59,6 +59,16 @@ const App = () => {
                       setNotificationType('')
                     }, 5000)
                   })
+                  .catch(error => {
+                    // this is the way to access the error message
+                    console.log(error)
+                    setNotification(error.response.data.error)
+                    setNotificationType('error')
+                    setTimeout(() => {
+                      setNotification(null)
+                      setNotificationType('')
+                    }, 5000)
+                  })
   }
 
   const deleteContact = (id, name) => {
